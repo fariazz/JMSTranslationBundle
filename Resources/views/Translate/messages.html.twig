@@ -9,8 +9,11 @@
         <tbody>
             {% for id, message in messages %}
             <tr>
-                <td><abbr title="{{ id }}">{{ id|truncate(20) }}</abbr></td>
+                <td style="font-size:8pt;"><abbr title="{{ id }}">{{ id}}</abbr></td>
                 <td>
+{% if message.localeString == id %}
+                        <span style="color:red">Pending!</span>
+                    {% endif %}
                     <textarea data-id="{{ id }}" class="span6"{% if isWriteable is sameas(false) %} readonly="readonly"{% endif %}>{{ message.localeString }}</textarea></td>
                 <td>
                     {% if message.meaning is not empty %}
